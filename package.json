@@ -1,0 +1,34 @@
+{
+  "name": "bloco_denotas_extensao",
+  "version": "1.0.0",
+  "description": "Bloco de notas para funcionar diretamente do navegador web.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rraffaa/bloco_de_notas_extensao.git"
+  },
+  "dependencies": {
+    "firebase": "^9.22.1"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "babel-jest": "^29.0.0",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.21.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "author": "Rafaella Lassance",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rraffaa/bloco_de_notas_extensao/issues"
+  },
+  "homepage": "https://github.com/rraffaa/bloco_de_notas_extensao#readme"
+}
