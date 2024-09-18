@@ -1,0 +1,16 @@
+#editor {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button img {
+    width: 24px;
+    height: 24px;
+  }
+  

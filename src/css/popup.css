@@ -1,0 +1,140 @@
+/* Estilo básico do corpo */
+body {
+    font-family: Arial, sans-serif;
+    width: 300px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Estilo da barra de menu */
+.menu-bar {
+    display: flex;
+    background-color: #f1f1f1;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-item {
+    position: relative;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.submenu-item {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.submenu-item:hover {
+    background-color: #eee;
+}
+
+/* Estilo do editor de texto */
+.text-editor {
+    margin-top: 10px;
+}
+
+.editable-div {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+    background-color: #fff;
+}
+
+/* Estilo dos botões de formatação */
+.formatting {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Estilo dos botões de formatação específicos */
+button#bold-btn, button#italic-btn, button#underline-btn, button#strike-btn, button#highlight-btn {
+    background-color: transparent; /* Para botões com ícones */
+}
+
+button#bold-btn img, button#italic-btn img, button#underline-btn img, button#strike-btn img, button#highlight-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Estilo do seletor de cor */
+select {
+    padding: 5px;
+}
+
+/* Estilo da lista de notas */
+.notes-list {
+    margin-top: 20px;
+}
+
+.notes-list h3 {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.notes-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notes-list li {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Estilo dos campos de localizar e substituir */
+.find-replace {
+    margin-bottom: 10px;
+}
+
+.find-replace input {
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
