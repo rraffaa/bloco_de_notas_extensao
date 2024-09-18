@@ -32,3 +32,9 @@
   },
   "homepage": "https://github.com/rraffaa/bloco_de_notas_extensao#readme"
 }
+{
+  "scripts": {
+    "dev": "node popup.js",
+    "test": "jest"
+  }
+}
