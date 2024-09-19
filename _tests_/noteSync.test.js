@@ -82,3 +82,19 @@ test('deve sincronizar e carregar a nota corretamente', async () => {
 
   expect(loadedContent).toBe(noteContent);
 });
+
+
+test('deve retornar erro quando usuário não está autenticado', async () => {
+  auth.currentUser = null; // Simula usuário não autenticado
+  await syncNote();
+  expect(console.log).toHaveBeenCalledWith('Usuário não autenticado!');
+});
+
+test('deve lidar com documento não encontrado no Firestore', async () => {
+  getDoc.mockImplementation(() => Promise.resolve({
+    exists: () => false
+  }));
+  await loadNoteFromFirebase();
+  const loadedContent = document.getElementById('note').innerHTML;
+  expect(loadedContent).toBe(''); // Verifica se o conteúdo permanece vazio
+});

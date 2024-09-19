@@ -42,3 +42,8 @@ test('deve retornar erro para descriptografia com chave incorreta', async () => 
   
   expect(decryptedText).not.toBe(originalText);
 });
+
+test('deve lançar erro ao tentar criptografar com chave inválida', async () => {
+  const invalidKey = null;
+  await expect(encrypt(originalText, invalidKey)).rejects.toThrow();
+});

@@ -11,5 +11,10 @@ test('deve aplicar a tag de estilo especificada ao texto selecionado', () => {
 
   applyStyle('b');
   const textoEstilizado = divNota.innerHTML;
-  expect(textoEstilizado).toBe('<b>Olá Mundo</b>');
+  expect(textoEstilizado).toBe('<b>Teste de estilo abcdefghij</b>');
 });
+
+document.body.innerHTML = `<div id="nota"><p>Texto de Teste</p></div>`;
+applyStyle('b');
+applyStyle('i');
+expect(divNota.innerHTML).toBe('<b><i>Texto de Teste</i></b>');
