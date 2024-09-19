@@ -43,4 +43,10 @@ A segurança dos dados é fundamental para esta extensão. As seguintes medidas 
 3. **Excluir Nota**: Remova notas desnecessárias.
 4. **Buscar e Substituir**: Utilize ferramentas de busca e substituição para gerenciar o texto dentro das notas.
 
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE.md). Consulte o arquivo `LICENSE.md` para detalhes completos.
+
 ---
+
+Para mais informações sobre como contribuir, relatar problemas ou obter suporte, consulte os arquivos de documentação adicionais ou entre em contato com os mantenedores do projeto.
