@@ -31,14 +31,26 @@ const analytics = getAnalytics(app);
 const auth = getAuth();
 const db = getFirestore();
 
+// Função para exibir mensagem de feedback
+function showFeedback(message) {
+    const feedbackDiv = document.getElementById('feedback');
+    feedbackDiv.textContent = message;
+    feedbackDiv.style.display = 'block';
+    setTimeout(() => {
+        feedbackDiv.style.display = 'none';
+    }, 5000); // A mensagem desaparece após 5 segundos
+}
+
 // Função para login
 async function login(email, password) {
     try {
         await signInWithEmailAndPassword(auth, email, password);
         console.log('Usuário autenticado com sucesso!');
+        showFeedback('Login bem-sucedido!');
         loadNoteFromFirebase(); // Carregar nota após autenticação bem-sucedida
     } catch (error) {
         console.error('Erro ao autenticar:', error);
+        showFeedback('Erro ao autenticar!');
     }
 }
 
@@ -47,9 +59,11 @@ async function logout() {
     try {
         await signOut(auth);
         console.log('Usuário desautenticado com sucesso!');
+        showFeedback('Logout bem-sucedido!');
         document.getElementById('note').innerHTML = ''; // Limpar nota ao deslogar
     } catch (error) {
         console.error('Erro ao desautenticar:', error);
+        showFeedback('Erro ao desautenticar!');
     }
 }
 
@@ -62,8 +76,10 @@ async function syncNote() {
     if (user) {
         await setDoc(doc(db, 'users', user.uid), { note: noteContent });
         console.log('Nota sincronizada com sucesso para o usuário:', user.uid);
+        showFeedback('Nota sincronizada com sucesso!');
     } else {
         console.error('Usuário não autenticado');
+        showFeedback('Usuário não autenticado!');
     }
 }
 
@@ -170,6 +186,7 @@ function deleteNote(index) {
             notes.splice(index, 1); // Remove a nota do array
             chrome.storage.local.set({ notes: notes }, function() {
                 console.log('Nota excluída com sucesso!');
+                showFeedback('Nota excluída com sucesso!');
                 loadSavedNotes(); // Atualiza a lista de notas após exclusão
             });
         }
@@ -218,50 +235,38 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.menu-item:nth-child(1) .submenu-item:nth-child(4)').addEventListener('click', syncNote);
     document.querySelector('.menu-item:nth-child(1) .submenu-item:nth-child(6)').addEventListener('click', syncNote); // Salvar tudo
 
-    // Botão de negrito
-    boldButton.addEventListener('click', function () {
-        applyStyle('b');
-    });
+       // Botão de negrito
+       boldButton.addEventListener('click', () => applyStyle('strong'));
 
-    // Botão de itálico
-    italicButton.addEventListener('click', function () {
-        applyStyle('i');
-    });
-
-    // Botão de sublinhado
-    underlineButton.addEventListener('click', function () {
-        applyStyle('u');
-    });
-
-    // Botão de tachado
-    strikeButton.addEventListener('click', function () {
-        applyStyle('strike');
-    });
-
-    // Botão de destacar
-    highlightButton.addEventListener('click', function () {
-        applyHighlight();
-    });
-
-    // Alterar cor da fonte
-    colorPicker.addEventListener('change', function () {
-        applyColor(colorPicker.value);
-    });
-
-    // Salvar nota automaticamente ao modificar o conteúdo
-    noteDiv.addEventListener('input', syncNote);
-
-    // Adiciona o ouvinte de eventos para o botão "Salvar Nota"
-    saveButton.addEventListener('click', function () {
-        syncNote();
-        const noteContent = noteDiv.innerHTML;
-        chrome.storage.local.set({ notes: [noteContent] }, function () {
-            console.log('Nota salva localmente com sucesso!');
-            loadSavedNotes(); // Atualiza a lista de notas salvas
-        });
-    });
-
-    // Realiza o backup automático em intervalos de tempo
-    setInterval(autoBackup, 60000); // Faz backup a cada 120 segundos
-});
-
+       // Botão de itálico
+       italicButton.addEventListener('click', () => applyStyle('em'));
+   
+       // Botão de sublinhado
+       underlineButton.addEventListener('click', () => applyStyle('u'));
+   
+       // Botão de texto riscado
+       strikeButton.addEventListener('click', () => applyStyle('s'));
+   
+       // Botão de destaque
+       highlightButton.addEventListener('click', applyHighlight);
+   
+       // Seletor de cor
+       colorPicker.addEventListener('change', (event) => applyColor(event.target.value));
+   
+       // Configura o botão "Salvar Nota"
+       saveButton.addEventListener('click', syncNote);
+   
+       // Configura ouvintes de eventos para login e logout
+       loginButton.addEventListener('click', () => login('email@example.com', 'password'));
+       logoutButton.addEventListener('click', logout);
+   
+       // Carrega a nota do Firebase ao iniciar
+       loadNoteFromFirebase();
+   
+       // Carrega as notas salvas ao iniciar
+       loadSavedNotes();
+   
+       // Configura backup automático a cada 30 minutos
+       setInterval(autoBackup, 1800000); // 30 minutos em milissegundos
+   });
+   

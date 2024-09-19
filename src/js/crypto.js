@@ -1,59 +1,41 @@
-// Função para gerar uma chave de criptografia
-async function generateKey() {
-    return await crypto.subtle.generateKey(
-      {
-        name: 'AES-GCM',
-        length: 256,
-      },
-      true,
-      ['encrypt', 'decrypt']
-    );
-  }
-  
-  // Função para converter uma string para um ArrayBuffer
-  function stringToArrayBuffer(str) {
-    return new TextEncoder().encode(str);
-  }
-  
-  // Função para converter um ArrayBuffer para uma string
-  function arrayBufferToString(buffer) {
-    return new TextDecoder().decode(buffer);
-  }
-  
-  // Função para criptografar o texto
-  export async function encrypt(text, key) {
-    const encoder = new TextEncoder();
-    const iv = crypto.getRandomValues(new Uint8Array(12)); // Vetor de inicialização aleatório
-    const encryptedContent = await crypto.subtle.encrypt(
-      {
-        name: 'AES-GCM',
-        iv: iv,
-      },
-      key,
-      encoder.encode(text)
-    );
-    
+import crypto from 'crypto';
+
+export async function encrypt(text, key, iv) {
+  try {
+    // Certifique-se de que key e iv são objetos Buffer ou Uint8Array
+    if (!(key instanceof Buffer) || !(iv instanceof Buffer)) {
+      throw new TypeError('Key and IV must be Buffer instances');
+    }
+
+    const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+    let encrypted = cipher.update(text, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    const tag = cipher.getAuthTag();
+
     return {
-      iv: arrayBufferToString(iv),
-      content: arrayBufferToString(encryptedContent)
+      iv: iv.toString('hex'),
+      content: encrypted,
+      tag: tag.toString('hex')
     };
+  } catch (error) {
+    throw new Error(`Erro ao criptografar: ${error.message}`);
   }
-  
-  // Função para descriptografar o texto
-  export async function decrypt(encrypted, key) {
-    const decoder = new TextDecoder();
-    const iv = stringToArrayBuffer(encrypted.iv);
-    const content = stringToArrayBuffer(encrypted.content);
+}
+
+export async function decrypt(encrypted, key, iv) {
+  try {
+    // Certifique-se de que key e iv são objetos Buffer ou Uint8Array
+    if (!(key instanceof Buffer) || !(iv instanceof Buffer)) {
+      throw new TypeError('Key and IV must be Buffer instances');
+    }
+
+    const decipher = crypto.createDecipheriv('aes-256-gcm', key, Buffer.from(iv, 'hex'));
+    decipher.setAuthTag(Buffer.from(encrypted.tag, 'hex'));
+    let decrypted = decipher.update(encrypted.content, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
     
-    const decryptedContent = await crypto.subtle.decrypt(
-      {
-        name: 'AES-GCM',
-        iv: iv,
-      },
-      key,
-      content
-    );
-    
-    return decoder.decode(decryptedContent);
+    return decrypted;
+  } catch (error) {
+    throw new Error(`Erro ao descriptografar: ${error.message}`);
   }
-  
+}

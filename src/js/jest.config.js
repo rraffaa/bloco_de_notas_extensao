@@ -1,4 +1,6 @@
 module.exports = {
   testEnvironment: 'jsdom',
-  // Outras configurações do Jest
+  transform: {
+    "^.+\\.js$": "babel-jest"
+  }
 };

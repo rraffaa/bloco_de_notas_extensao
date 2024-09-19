@@ -1,19 +1,19 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
-import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 // Mock do Firebase
-jest.mock('https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js', () => ({
+jest.mock('firebase/app', () => ({
   initializeApp: jest.fn(),
 }));
 
-jest.mock('https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js', () => ({
+jest.mock('firebase/auth', () => ({
   getAuth: jest.fn().mockReturnValue({
-    currentUser: null, // Simulação padrão, será alterada nos testes
+    currentUser: null, // Simulação padrão
   }),
 }));
 
-jest.mock('https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js', () => ({
+jest.mock('firebase/firestore', () => ({
   getFirestore: jest.fn(),
   doc: jest.fn(),
   setDoc: jest.fn(),
@@ -23,7 +23,7 @@ jest.mock('https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js', () 
   })),
 }));
 
-// Inicializa o Firebase
+// Inicializa o Firebase apenas para garantir que o código de configuração está correto
 const firebaseConfig = {
   apiKey: 'fake-api-key',
   authDomain: 'fake-auth-domain',
@@ -34,7 +34,6 @@ const firebaseConfig = {
   measurementId: 'fake-measurement-id',
 };
 
-// Inicializa o Firebase apenas para garantir que o código de configuração está correto
 initializeApp(firebaseConfig);
 const db = getFirestore();
 const auth = getAuth();
@@ -72,6 +71,9 @@ test('deve sincronizar e carregar a nota corretamente', async () => {
   const user = { uid: 'User0' };
   auth.currentUser = user; // Simula o usuário autenticado
 
+  // Espia o console.log
+  const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+
   // Simula a sincronização
   await syncNote();
   expect(setDoc).toHaveBeenCalledWith(doc(db, 'users', user.uid), { note: noteContent });
@@ -81,19 +83,33 @@ test('deve sincronizar e carregar a nota corretamente', async () => {
   const loadedContent = document.getElementById('note').innerHTML;
 
   expect(loadedContent).toBe(noteContent);
+
+  // Restaura o spy
+  logSpy.mockRestore();
 });
 
-
 test('deve retornar erro quando usuário não está autenticado', async () => {
+  document.body.innerHTML = `<div id="note"></div>`;
   auth.currentUser = null; // Simula usuário não autenticado
+
+  // Espia o console.log
+  const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+
   await syncNote();
   expect(console.log).toHaveBeenCalledWith('Usuário não autenticado!');
+
+  // Restaura o spy
+  logSpy.mockRestore();
 });
 
 test('deve lidar com documento não encontrado no Firestore', async () => {
+  document.body.innerHTML = `<div id="note"></div>`;
+
+  // Simula Firestore não encontrando o documento
   getDoc.mockImplementation(() => Promise.resolve({
     exists: () => false
   }));
+
   await loadNoteFromFirebase();
   const loadedContent = document.getElementById('note').innerHTML;
   expect(loadedContent).toBe(''); // Verifica se o conteúdo permanece vazio
