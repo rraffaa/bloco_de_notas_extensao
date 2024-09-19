@@ -14,3 +14,82 @@
     height: 24px;
   }
   
+  /* Estilo para o ícone de logout */
+#logout-btn {
+  background-image: url('/src/icons/arrow.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de backup */
+#backup-btn {
+  background-image: url('/src/icons/backup.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de negrito */
+#bold-btn {
+  background-image: url('/src/icons/bold.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de alternar cores */
+#color-picker {
+  background-image: url('/src/icons/color-wheel.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de excluir nota */
+#delete-btn {
+  background-image: url('/src/icons/delete.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de itálico */
+#italic-btn {
+  background-image: url('/src/icons/italic.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de login */
+#login-btn {
+  background-image: url('/src/icons/login.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de salvar nota */
+#save-btn {
+  background-image: url('/src/icons/salvar.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de letra riscada */
+#strike-btn {
+  background-image: url('/src/icons/strike-through.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo para o ícone de sublinhado */
+#underline-btn {
+  background-image: url('/src/icons/underlined.png'); /* Substitua pelo nome do arquivo correto */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

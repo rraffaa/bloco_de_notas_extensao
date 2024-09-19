@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloco de Notas</title>
-    <link rel="stylesheet" href="css/popup.css">
+    <title>Editor de Notas</title>
+    <link rel="stylesheet" href="/src/css/popup.css"> 
 </head>
 <body>
     <div class="menu-bar">
         <div class="menu-item">Arquivo
             <div class="submenu">
-                <!-- Itens do menu Arquivo -->
+                <div class="submenu-item">Novo</div>
+                <div class="submenu-item">Abrir</div>
+                <div class="submenu-item">Salvar</div>
+                <div class="submenu-item">Salvar Tudo</div> <!-- Adiciona o item de menu "Salvar Tudo" -->
             </div>
         </div>
         <div class="menu-item">Editar
@@ -28,11 +31,14 @@
         <div class="menu-item">Exibir</div>
     </div>
 
-    <div class="text-editor">
+    <div id="editor" class="text-editor">
         <div id="note" contenteditable="true" class="editable-div">Escreva sua anotação aqui...</div>
         <div class="formatting">
-            <button id="bold-btn"><b>B</b></button>
-            <button id="italic-btn"><i>I</i></button>
+            <button id="bold-btn"><img src="icons/bold-icon.png" alt="Negrito"></button>
+            <button id="italic-btn"><img src="icons/italic-icon.png" alt="Itálico"></button>
+            <button id="underline-btn"><img src="icons/underline-icon.png" alt="Sublinhado"></button> <!-- Novo botão -->
+            <button id="strike-btn"><img src="icons/strike-icon.png" alt="Tachado"></button> <!-- Novo botão -->
+            <button id="highlight-btn"><img src="icons/highlight-icon.png" alt="Destaque"></button> <!-- Novo botão -->
             <select id="color-picker">
                 <option value="black">Preto</option>
                 <option value="blue">Azul</option>
@@ -40,15 +46,13 @@
                 <option value="green">Verde</option>
             </select>
         </div>
-        <!-- Campos de Localizar e Substituir -->
         <div class="find-replace">
             <input type="text" id="find-input" placeholder="Localizar...">
             <input type="text" id="replace-input" placeholder="Substituir por...">
             <button id="find-btn">Localizar</button>
             <button id="replace-btn">Substituir</button>
         </div>
-        <!-- Botão para salvar a nota -->
-        <button id="saveNoteBtn">Salvar Nota</button>
+        <button id="save-btn"><img src="icons/save-icon.png" alt="Salvar Nota"></button> <!-- Atualizado -->
     </div>    
 
     <div class="notes-list">
@@ -57,9 +61,7 @@
             <!-- Notas serão inseridas aqui -->
         </ul>
     </div>
-    
+
     <script type="module" src="js/popup.js"></script>
 </body>
 </html>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
