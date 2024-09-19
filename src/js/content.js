@@ -1,6 +1,5 @@
-// content.js
 function showMessage(message) {
-    // Seleciona ou cria o elemento para mostrar a mensagem
+    
     let messageDiv = document.getElementById('feedback-message');
     if (!messageDiv) {
       messageDiv = document.createElement('div');
@@ -20,7 +19,6 @@ function showMessage(message) {
     }, 5000);
   }
   
-  // Exemplo de como você pode chamar essa função após salvar uma nota
   function saveNote() {
     // Lógica para salvar a nota...
     showMessage('Nota salva com sucesso!');
