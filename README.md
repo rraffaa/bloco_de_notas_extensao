@@ -4,28 +4,27 @@ A **Extensão de Bloco de Notas para Google Chrome** é uma ferramenta desenvolv
 
 ## Funcionalidades
 
-### Criação e Edição de Notas
-- **Criação de Notas**: Crie novas notas diretamente no navegador com uma interface intuitiva.
-- **Edição de Notas**: Modifique o conteúdo das notas existentes com suporte para formatação rica.
+### Funcionalidades
 
-### Gerenciamento de Notas
-- **Visualização**: Visualize notas salvas sem sair da interface do navegador.
-- **Exclusão**: Remova notas que não são mais necessárias, mantendo seu ambiente de trabalho organizado.
+- **Criação e Edição de Notas:**
+  - Crie novas notas diretamente no navegador com uma interface intuitiva.
+  - Modifique o conteúdo das notas existentes, com suporte para formatação rica.
 
-### Segurança e Privacidade
-- **Criptografia de Notas**: Protege notas sensíveis com criptografia AES, garantindo que apenas usuários autorizados possam acessar o conteúdo.
-- **Autenticação**: Implementa autenticação por PIN, senha ou biometria para restringir o acesso à extensão.
+- **Gerenciamento de Notas:**
+  - Visualize notas salvas sem sair da interface do navegador.
+  - Remova notas desnecessárias, mantendo seu ambiente de trabalho organizado.
 
-### Backup e Recuperação
-- **Backup Automático**: Realiza backup automático das notas na nuvem para prevenir a perda de dados.
-- **Recuperação de Notas**: Permite a recuperação de versões anteriores das notas.
+- **Sincronização com a Nuvem:**
+  - As notas são sincronizadas automaticamente com a nuvem, permitindo acesso de qualquer dispositivo conectado à sua conta.
+  - Garantia de backup seguro, com a possibilidade de recuperar versões anteriores em caso de exclusão acidental.
 
-## Segurança dos Dados
+- **Segurança e Privacidade:**
+  - Proteção de notas sensíveis com criptografia AES, garantindo que apenas usuários autorizados possam acessar o conteúdo.
+  - Implementação de autenticação por PIN, senha ou biometria para restringir o acesso à extensão.
 
-A segurança dos dados é fundamental para esta extensão. As seguintes medidas são implementadas:
-- **Criptografia de Conteúdo**: Utiliza criptografia AES para proteger notas sensíveis.
-- **Autenticação**: Protege o acesso à extensão com sistemas de autenticação robustos.
-- **Backup na Nuvem**: Dados são salvos periodicamente na nuvem, com opções de recuperação.
+- **Backup e Recuperação:**
+  - Realiza backup automático das notas na nuvem para prevenir a perda de dados.
+  - Permite a recuperação de versões anteriores das notas.
 
 ## Configuração e Uso
 
@@ -41,7 +40,6 @@ A segurança dos dados é fundamental para esta extensão. As seguintes medidas 
 1. **Criar Nota**: Adicione novas notas e salve seu conteúdo.
 2. **Editar Nota**: Abra e edite notas existentes, aplicando formatação conforme necessário.
 3. **Excluir Nota**: Remova notas desnecessárias.
-4. **Buscar e Substituir**: Utilize ferramentas de busca e substituição para gerenciar o texto dentro das notas.
 
 ## Licença
 
