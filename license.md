@@ -4,7 +4,7 @@ Copyright (c) 2024 Rafaella Lassance
 
 ## Permissão
 
-Permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia deste software e dos arquivos de documentação associados (o "Software"), para lidar com o Software sem restrições, incluindo, sem limitação, os direitos de usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias do Software. Esta permissão também se aplica às pessoas a quem o Software for fornecido, sujeito às seguintes condições:
+Permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia deste software e dos arquivos de documentação associados (doravante referido como 'Software'), para lidar com o Software sem restrições, incluindo, sem limitação, os direitos de usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias do Software. Esta permissão também se aplica às pessoas a quem o Software for fornecido, sujeito às seguintes condições:
 
 1. **A nota de copyright acima e esta nota de permissão devem ser incluídas em todas as cópias ou partes substanciais do Software.**
 
