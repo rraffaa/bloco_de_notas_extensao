@@ -4,11 +4,9 @@ A **Extensão de Bloco de Notas para Google Chrome** é uma ferramenta desenvolv
 
 ## Funcionalidades
 
-### Funcionalidades
-
 - **Criação e Edição de Notas:**
   - Crie novas notas diretamente no navegador com uma interface intuitiva.
-  - Modifique o conteúdo das notas existentes, com suporte para formatação rica.
+  - Modifique o conteúdo das notas existentes, com suporte para formatação rica, como negrito, itálico e sublinhado.
 
 - **Gerenciamento de Notas:**
   - Visualize notas salvas sem sair da interface do navegador.
