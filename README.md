@@ -41,7 +41,9 @@ A **Extensão de Bloco de Notas para Google Chrome** é uma ferramenta desenvolv
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE.md). Consulte o arquivo `LICENSE.md` para detalhes completos.
+## Licença
+
+Este projeto está licenciado sob a [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). Consulte o arquivo LICENSE para detalhes completos.
 
 ---
 
